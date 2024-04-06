@@ -1,43 +1,44 @@
-import React from 'react'
+import React from 'react';
 
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 import { images } from '../../constants';
 
-import {AppWrap} from '../../wrapper';
+import { AppWrap } from '../../wrapper';
 
-import './Header.scss'
+import './Header.scss';
 
 const scaleVariants = {
-  whileInView : {
-    scale : [0,1],
-    opacity : [0,1],
-    transition : {
-      duration : 1,
-      ease : 'easeInOut'
-    }
-  }
-}
+  whileInView: {
+    scale: [0, 1],
+    opacity: [0, 1],
+    transition: {
+      duration: 1,
+      ease: 'easeInOut',
+    },
+  },
+};
 
 const Header = () => {
   return (
-    <div className='app__header app__flex'>
+    <div className="app__header app__flex">
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
-        className='app__header-info'
+        className="app__header-info"
       >
         <div className="app__header-badge">
           <div className="badge-cmp app__flex">
             <span>👋</span>
             <div style={{ marginLeft: 20 }}>
-              <p className='p-text'>Hello, I am</p>
-              <h1 className='head-text'>Raunak Baliyan</h1>
+              <p className="p-text">Hello, I am</p>
+              <h1 className="head-text">Raunak Baliyan</h1>
             </div>
           </div>
 
           <div className="tag-cmp app__flex">
-            <p className='p-text'>Web Developer</p>
-            <p className='p-text'>MERN STACK</p>
+            <p className="p-text">Web Developer</p>
+            <p className="p-text">MERN STACK</p>
+            <p className="p-text">Next JS</p>
           </div>
         </div>
       </motion.div>
@@ -45,36 +46,30 @@ const Header = () => {
       <motion.div
         whileInView={{ opacity: [0, 1] }}
         transition={{ duration: 0.5, delayChildren: 0.5 }}
-        className='app__header-img'
+        className="app__header-img"
       >
         <img src={images.profile} alt="profile" />
         <motion.img
           whileInView={{ opacity: [0, 1] }}
           transition={{ duration: 1, ease: 'easeInOut' }}
-          className='overlay-circle'
+          className="overlay-circle"
           src={images.circle}
-          alt='profile-circle'
+          alt="profile-circle"
         />
       </motion.div>
       <motion.div
         variants={scaleVariants}
         whileInView={scaleVariants.whileInView}
-        className='app__header-circles'
+        className="app__header-circles"
       >
-        {
-          [images.react,images.redux,images.node].map((circle,index)=>(
-            <div className='circle-cmp app__flex' key={`circles-${index}`}>
-                <img src={circle} alt="circle" />
-            </div>
-
-          ))
-        }
+        {[images.react, images.redux, images.node].map((circle, index) => (
+          <div className="circle-cmp app__flex" key={`circles-${index}`}>
+            <img src={circle} alt="circle" />
+          </div>
+        ))}
       </motion.div>
-
-
-
     </div>
-  )
-}
+  );
+};
 
-export default AppWrap(Header,'home')
+export default AppWrap(Header, 'home');
